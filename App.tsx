@@ -8,7 +8,6 @@ import AddToHomeScreenBanner from './components/AddToHomeScreenBanner';
 import PaymentFooter from './components/PaymentFooter';
 import PaymentForm from './components/PaymentForm';
 import CustomAmountForm from './components/CustomAmountForm';
-import Login from './components/Login';
 
 const COIN_PACKAGES: CoinPackage[] = [
   { id: 1, coins: 30, price: 0.31 },
@@ -20,9 +19,6 @@ const COIN_PACKAGES: CoinPackage[] = [
 ];
 
 const App: React.FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(() => {
-    return localStorage.getItem('isAuthenticated') === 'true';
-  });
   const [view, setView] = useState<'main' | 'payment'>('main');
   const [selectedPackageId, setSelectedPackageId] = useState<number>(COIN_PACKAGES[0].id);
   const [savedCards, setSavedCards] = useState<CardDetails[]>([]);
@@ -30,11 +26,6 @@ const App: React.FC = () => {
 
   const selectedPackageFromList = COIN_PACKAGES.find(p => p.id === selectedPackageId) || COIN_PACKAGES[0];
   const packageForPayment = customPackage || selectedPackageFromList;
-
-  const handleLoginSuccess = () => {
-    localStorage.setItem('isAuthenticated', 'true');
-    setIsAuthenticated(true);
-  };
 
   const [showCustomModal, setShowCustomModal] = useState(false);
 
@@ -124,18 +115,12 @@ const App: React.FC = () => {
   return (
     <div className="bg-gray-50 min-h-screen font-sans">
       <div className="max-w-md mx-auto bg-white min-h-screen relative">
-        {isAuthenticated ? (
-          <>
-            {renderContent()}
-            {showCustomModal && (
-              <CustomAmountForm 
-                onBack={handleGoBack}
-                onContinue={handleCustomAmountContinue}
-              />
-            )}
-          </>
-        ) : (
-          <Login onLoginSuccess={handleLoginSuccess} />
+        {renderContent()}
+        {showCustomModal && (
+          <CustomAmountForm 
+            onBack={handleGoBack}
+            onContinue={handleCustomAmountContinue}
+          />
         )}
       </div>
     </div>

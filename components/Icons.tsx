@@ -13,12 +13,12 @@ export const CoinIcon = (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
     src="https://tiktok-project-get-coins.vercel.app/assets/coin-tiktok-BBusIcSw.png" 
     alt="Coin"
     {...props}
-    // We put the style AFTER props to ensure width/height overrides any incoming styles
+    // Spread incoming styles first so our defaults (width/height/filter) override them
     style={{ 
+       ...(props.style || {}),
        width: '25px', 
        height: '25px',
-       objectFit: 'contain', // Keeps the coin aspect ratio correct
-       ...props.style 
+           filter: 'brightness(1.2) saturate(1.4) sepia(1) hue-rotate(-20deg) saturate(5) brightness(.9)'
     }} 
   />
 );
