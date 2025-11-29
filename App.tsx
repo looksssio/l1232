@@ -95,7 +95,14 @@ const App: React.FC = () => {
               <RechargeSection 
                 packages={COIN_PACKAGES}
                 selectedPackageId={selectedPackageId}
-                onSelectPackage={setSelectedPackageId}
+                onSelectPackage={(id) => {
+                  setSelectedPackageId(id);
+                  const pkg = COIN_PACKAGES.find(p => p.id === id);
+                  if (pkg?.isCustom) {
+                    // Open the custom modal immediately when custom card is clicked
+                    setShowCustomModal(true);
+                  }
+                }}
               />
               <div className="space-y-4 mt-6">
                 <InviteBanner />
