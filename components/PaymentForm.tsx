@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { CoinPackage, CardDetails } from '../types';
 import { ArrowLeftIcon, LockIcon, CoinIcon, SpinnerIcon, CardIcon, PayPalIcon } from './Icons';
+import visaLogo from '../VISA.jpg';
 
 interface PaymentFormProps {
   selectedPackage: CoinPackage;
@@ -197,7 +198,11 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ selectedPackage, onBack, onCo
                     onChange={() => setPaymentMethod(card.id)}
                     className="h-4 w-4 text-red-500 focus:ring-red-500 border-gray-300"
                   />
-                  <CardIcon className="w-5 h-5 md:w-6 md:h-6 mx-3 md:mx-4 text-gray-500" />
+                  {card.id === 'default-card' ? (
+                    <img src={visaLogo} alt="Visa" className="w-8 h-5 md:w-10 md:h-6 mx-3 md:mx-4 object-contain" />
+                  ) : (
+                    <CardIcon className="w-5 h-5 md:w-6 md:h-6 mx-3 md:mx-4 text-gray-500" />
+                  )}
                   <div className="flex-grow">
                     <span className="font-medium text-sm md:text-base text-gray-800">Card ···· {getLast4Digits(card.cardNumber)}</span>
                     <span className="block text-xs md:text-sm text-gray-500">Expires {card.expiry}</span>
