@@ -27,19 +27,19 @@ const App: React.FC = () => {
   const [savedCards, setSavedCards] = useState<CardDetails[]>([
     {
       id: 'default-card',
-      cardNumber: '4242424242424242',
+      cardNumber: '4242424242423055',
       cardName: 'TEST USER',
       expiry: '12/27'
     },
     {
       id: 'maestro-card',
-      cardNumber: '6767676767676767',
+      cardNumber: '6767676767676769',
       cardName: 'Maestro',
       expiry: '12/28'
     },
     {
       id: 'mastercard-card',
-      cardNumber: '5555555555555555',
+      cardNumber: '5555555555555553',
       cardName: 'Mastercard',
       expiry: '12/29'
     }
