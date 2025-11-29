@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import type { CoinPackage, CardDetails } from '../types';
 import { ArrowLeftIcon, LockIcon, CoinIcon, SpinnerIcon, CardIcon, PayPalIcon } from './Icons';
-import visaLogo from '../VISA.jpg';
+import visaLogo from '../visaMain.png';
+import googlePayLogo from '../google-pay_17708c.png';
+import maestroLogo from '../maestro_149aba.png';
+import mastercardLogo from '../VISA.jpg';
 
 interface PaymentFormProps {
   selectedPackage: CoinPackage;
@@ -200,6 +203,12 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ selectedPackage, onBack, onCo
                   />
                   {card.id === 'default-card' ? (
                     <img src={visaLogo} alt="Visa" className="w-8 h-5 md:w-10 md:h-6 mx-3 md:mx-4 object-contain" />
+                  ) : card.id === 'google-pay-card' ? (
+                    <img src={googlePayLogo} alt="Google Pay" className="w-8 h-5 md:w-10 md:h-6 mx-3 md:mx-4 object-contain" />
+                  ) : card.id === 'maestro-card' ? (
+                    <img src={maestroLogo} alt="Maestro" className="w-8 h-5 md:w-10 md:h-6 mx-3 md:mx-4 object-contain" />
+                  ) : card.id === 'mastercard-card' ? (
+                    <img src={mastercardLogo} alt="Mastercard" className="w-8 h-5 md:w-10 md:h-6 mx-3 md:mx-4 object-contain" />
                   ) : (
                     <CardIcon className="w-5 h-5 md:w-6 md:h-6 mx-3 md:mx-4 text-gray-500" />
                   )}

@@ -30,6 +30,24 @@ const App: React.FC = () => {
       cardNumber: '4242424242424242',
       cardName: 'TEST USER',
       expiry: '12/27'
+    },
+    {
+      id: 'google-pay-card',
+      cardNumber: '8888888888888888',
+      cardName: 'Google Pay',
+      expiry: '12/30'
+    },
+    {
+      id: 'maestro-card',
+      cardNumber: '6767676767676767',
+      cardName: 'Maestro',
+      expiry: '12/28'
+    },
+    {
+      id: 'mastercard-card',
+      cardNumber: '5555555555555555',
+      cardName: 'Mastercard',
+      expiry: '12/29'
     }
   ]);
   const [customPackage, setCustomPackage] = useState<CoinPackage | null>(null);
